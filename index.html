@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Gitika!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      margin-top: 30px;
+      text-shadow: 0 0 10px #fff;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff8aa1; }
+      to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4e80; }
+    }
+    .message {
+      margin: 30px auto;
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .gallery img {
+      width: 250px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #fff;
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 Happy Birthday Gitika! 🎂</h1>
+
+  <div class="message">
+    <p>Thank you for being a friend who has the same importance as a sister.</p>
+    <p>Thank you for all the joy, fun, and time we’ve spent together. I hope we continue to create amazing memories in the future.</p>
+    <p>You’re a light in so many lives, and I’m grateful to know you. May this year bring even more happiness, strength, and sparkle your way. 🦋</p>
+    <p>Keep smiling like the sunshine you are! 💖</p>
+  </div>
+
+  <div class="gallery">
+    <img src="1717739692210.jpg" alt="Gitika 1">
+    <img src="IMG-20240214-WA0042.jpg" alt="Gitika 2">
+  </div>
+
+  <footer>
+    Made with 💖 by your forever friend
+  </footer>
+
+  <!-- Confetti Script -->
+  <canvas id="confetti"></canvas>
+  <script>
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    const particles = Array.from({ length: 150 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 6 + 2,
+      d: Math.random() * 100,
+      color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+      tilt: Math.random() * 10 - 10
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, false);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        p.y += Math.cos(p.d) + 1 + p.r / 2;
+        p.x += Math.sin(p.d);
+        if (p.y > height) {
+          p.y = -10;
+          p.x = Math.random() * width;
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+    window.addEventListener("resize", () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>
